@@ -56,4 +56,16 @@ describe('Compra', { testIsolation: false }, () => {
       expect(total, 'total').to.eq(redondear(subtotal + impuestos));
     });
   });
+
+  it('finaliza la compra y muestra la confirmación', () => {
+    const { confirmacion } = compra;
+
+    checkout.finalizar();
+    cy.location('pathname').should('eq', '/checkout-complete.html');
+    encabezado.titulo().should('have.text', confirmacion.titulo);
+    checkout.encabezadoConfirmacion().should('have.text', confirmacion.encabezado);
+    checkout.textoConfirmacion().should('have.text', confirmacion.texto);
+    encabezado.contador().should('not.exist');
+    checkout.volver().should('be.visible');
+  });
 });
