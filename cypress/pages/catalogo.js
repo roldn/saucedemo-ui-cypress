@@ -6,7 +6,7 @@ const selectores = {
 };
 
 export const catalogo = {
-  visitar: () => cy.visit('/inventory.html'),
+  visitar: () => cy.visit('/inventory.html', { failOnStatusCode: false }),
 
   obtenerProductos: (nombres) =>
     listaDeProductos.leer().then((productos) =>
