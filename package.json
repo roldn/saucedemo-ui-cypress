@@ -1,0 +1,9 @@
+{
+  "name": "saucedemo-cypress",
+  "version": "1.0.0",
+  "description": "Pruebas E2E de UI de Sauce Demo con Cypress",
+  "private": true,
+  "devDependencies": {
+    "cypress": "^16.2.1"
+  }
+}
