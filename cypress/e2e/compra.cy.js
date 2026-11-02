@@ -3,6 +3,7 @@ import { catalogo } from '../pages/catalogo';
 import { checkout } from '../pages/checkout';
 import { encabezado } from '../pages/encabezado';
 import { listaDeProductos } from '../pages/listaDeProductos';
+import { redondear, sumarPrecios } from '../support/helpers';
 
 describe('Compra', { testIsolation: false }, () => {
   let compra;
@@ -43,5 +44,16 @@ describe('Compra', { testIsolation: false }, () => {
 
     checkout.completarDatos(compra.comprador);
     cy.location('pathname').should('eq', '/checkout-step-two.html');
+  });
+
+  it('muestra el resumen con los productos y los importes correctos', () => {
+    encabezado.titulo().should('have.text', 'Checkout: Overview');
+    listaDeProductos.validarProductos(seleccionados);
+    listaDeProductos.validarCantidades(1);
+
+    checkout.leerImportes().then(({ subtotal, impuestos, total }) => {
+      expect(subtotal, 'subtotal').to.eq(sumarPrecios(seleccionados));
+      expect(total, 'total').to.eq(redondear(subtotal + impuestos));
+    });
   });
 });
