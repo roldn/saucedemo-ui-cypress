@@ -1,3 +1,8 @@
 {
-  "productos": ["Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt", "Sauce Labs Onesie"]
+  "productos": ["Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt", "Sauce Labs Onesie"],
+  "comprador": {
+    "nombre": "Francisco",
+    "apellido": "Roldán",
+    "codigoPostal": "1425"
+  }
 }
