@@ -4,5 +4,10 @@
     "nombre": "Francisco",
     "apellido": "Roldán",
     "codigoPostal": "1425"
+  },
+  "confirmacion": {
+    "titulo": "Checkout: Complete!",
+    "encabezado": "Thank you for your order!",
+    "texto": "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
   }
 }
