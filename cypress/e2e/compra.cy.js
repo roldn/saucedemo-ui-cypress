@@ -1,5 +1,6 @@
 import { carrito } from '../pages/carrito';
 import { catalogo } from '../pages/catalogo';
+import { checkout } from '../pages/checkout';
 import { encabezado } from '../pages/encabezado';
 import { listaDeProductos } from '../pages/listaDeProductos';
 
@@ -33,5 +34,14 @@ describe('Compra', { testIsolation: false }, () => {
     listaDeProductos.validarProductos(seleccionados);
     listaDeProductos.validarCantidades(1);
     carrito.seguirComprando().should('be.visible');
+  });
+
+  it('completa los datos del comprador', () => {
+    carrito.iniciarCheckout();
+    cy.location('pathname').should('eq', '/checkout-step-one.html');
+    encabezado.titulo().should('have.text', 'Checkout: Your Information');
+
+    checkout.completarDatos(compra.comprador);
+    cy.location('pathname').should('eq', '/checkout-step-two.html');
   });
 });
