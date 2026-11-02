@@ -1,0 +1,14 @@
+{
+  "name": "saucedemo-cypress",
+  "version": "1.0.0",
+  "description": "Pruebas E2E de UI de Sauce Demo con Cypress",
+  "private": true,
+  "scripts": {
+    "test": "cypress run",
+    "test:chrome": "cypress run --browser chrome",
+    "cy:open": "cypress open --e2e"
+  },
+  "devDependencies": {
+    "cypress": "^16.2.1"
+  }
+}
