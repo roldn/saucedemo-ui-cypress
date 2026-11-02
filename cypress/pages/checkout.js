@@ -8,6 +8,10 @@ const selectores = {
   subtotal: porDataTest('subtotal-label'),
   impuestos: porDataTest('tax-label'),
   total: porDataTest('total-label'),
+  finalizar: porDataTest('finish'),
+  encabezadoConfirmacion: porDataTest('complete-header'),
+  textoConfirmacion: porDataTest('complete-text'),
+  volver: porDataTest('back-to-products'),
 };
 
 const leerImporte = (selector) => cy.get(selector).invoke('text').then(aImporte);
@@ -26,4 +30,12 @@ export const checkout = {
         leerImporte(selectores.total).then((total) => ({ subtotal, impuestos, total }))
       )
     ),
+
+  finalizar: () => cy.get(selectores.finalizar).click(),
+
+  encabezadoConfirmacion: () => cy.get(selectores.encabezadoConfirmacion),
+
+  textoConfirmacion: () => cy.get(selectores.textoConfirmacion),
+
+  volver: () => cy.get(selectores.volver),
 };
